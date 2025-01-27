@@ -1,25 +1,26 @@
 #!/bin/bash
 
-# 检查并安装 Python 3.8.10（如果未安装）
-if ! python3.8 --version &>/dev/null; then
+# 检查是否安装了 Python 3.8.10
+if python3.8 --version 2>/dev/null | grep -q "3.8.10"; then
+    echo "Python 3.8.10 已安装"
+else
     echo "Python 3.8.10 未安装，正在下载安装..."
-    # 下载 Python 3.8.10 安装包
     curl -o python-3.8.10.tgz https://www.python.org/ftp/python/3.8.10/Python-3.8.10.tgz
-    # 解压并安装 Python 3.8.10
     tar -xzf python-3.8.10.tgz
     cd Python-3.8.10
     ./configure --enable-optimizations
     sudo make altinstall
+    cd ..
     echo "Python 3.8.10 安装完成"
 fi
 
-# 确保使用 Python 3.8 启动指定文件
+# 使用 Python 3.8 启动指定文件
 echo "正在启动指定文件..."
-python3.8 main.pyc
+python3.8 mian.pyc
 
-# 如果文件被多次启动，使用循环控制
+# 如果文件被多次启动，自动重启
 while true; do
-    if ! python3.8 main.pyc; then
+    if ! python3.8 mian.pyc; then
         echo "文件启动失败，正在重新启动..."
     fi
 done
