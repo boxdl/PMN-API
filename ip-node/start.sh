@@ -14,13 +14,22 @@ else
     echo "Python 3.8.10 安装完成"
 fi
 
-# 使用 Python 3.8 启动指定文件
-echo "正在启动指定文件..."
-python3.8 mian.pyc
+# 确保安装 pip
+echo "正在确保 pip 已安装..."
+python3.8 -m ensurepip --upgrade
+python3.8 -m pip install --upgrade pip
+
+# 安装所需库
+echo "正在安装所需库..."
+python3.8 -m pip install flask requests
+
+# 启动 main.pyc 文件
+echo "正在启动 main.pyc 文件..."
+python3.8 main.pyc
 
 # 如果文件被多次启动，自动重启
 while true; do
-    if ! python3.8 mian.pyc; then
-        echo "文件启动失败，正在重新启动..."
+    if ! python3.8 main.pyc; then
+        echo "程序崩溃，正在重新启动..."
     fi
 done
