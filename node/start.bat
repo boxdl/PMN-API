@@ -23,7 +23,7 @@ python -m pip install --upgrade pip
 
 REM 安装所需库
 echo 正在安装所需库...
-python -m pip install flask requests
+python -m pip install flask requests psutil
 
 REM 启动 main.pyc 文件
 echo 正在启动 main.pyc 文件...

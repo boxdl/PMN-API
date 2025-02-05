@@ -21,7 +21,7 @@ python3.8 -m pip install --upgrade pip
 
 # 安装所需库
 echo "正在安装所需库..."
-python3.8 -m pip install flask requests
+python3.8 -m pip install flask requests psutil
 
 # 启动 main.pyc 文件
 echo "正在启动 main.pyc 文件..."
